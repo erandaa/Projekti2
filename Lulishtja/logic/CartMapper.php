@@ -4,7 +4,7 @@ require_once "Database.php";
 
 class CartMapper extends DatabaseConfig{
     private $connection; 
-    private $queryt
+    private $query;
 
     public function __construct(){
         $this->connection = $this->getConnection();
@@ -26,18 +26,18 @@ class CartMapper extends DatabaseConfig{
     }
 
     public function getCartId(){
-        $this->"select id from cart where id = (SELECT id FROM user WHERE email = '".$_SESSION['email']."')";
+        $this->query="select id from cart where id = (SELECT id FROM user WHERE email = '".$_SESSION['email']."')";
         $statement = $this->connection->prepare($this->query);
         $statement->execute();
-        $resut=$statement->fetchALL(PDO::FETCHASSOC);
+        $result=$statement->fetchALL(PDO::FETCH_ASSOC);
         return $result;
     }
-    public fucntion getCartProducts($user_id){
+    public function getCartProducts($user_id){
         $this->query = "select * from cart where user_id=:user_id";
         $statement= $this->connection ->prepare($this->query);
         $statement->bindParam(":user_id",$user_id);
         $statement->execute();
-        $reslut=$statement->fetchALL(PDO::FETCHASSOC);
+        $result=$statement->fetchALL(PDO::FETCH_ASSOC);
         return $result;
     }
     public function deleteProductFromCart($product_id){

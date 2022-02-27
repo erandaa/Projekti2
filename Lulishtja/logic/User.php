@@ -11,7 +11,7 @@ class User extends Human{
         $_SESSION['role']=0;
         $_SESSION['rolename']="DefaultUser";
         $_SESSION['is_logged_in']=true;
-        $_SESSION['email']=this->email;
+        $_SESSION['email']=$this->email;
     }
     public function setCookie(){
         setCookie("email",$this->getEmail(),time()+3600);

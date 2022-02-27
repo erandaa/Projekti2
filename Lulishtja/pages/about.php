@@ -1,36 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lulishtja</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
-<body>
-<header>
-
-    <input type="checkbox" name="" id="toggler">
-    <label for="toggler" class="fas fa-bars"></label>
-
-    <a href="./index.php" class="logo">Lulishtja<span>.</span></a>
-
-    <nav class="navbar">
-        <a href="index.php">Home</a>
-        <a href="about.php">About</a>
-        <a href="products.php">Products</a>
-        <a href="contact.php">Contact</a>
-    </nav>
-
-    <div class="icons">
-        <a href="#" class="fas fa-heart"></a>
-        <a href="#" class="fas fa-shopping-cart"></a>
-        <a href="#" class="fas fa-user"></a>
-    </div>
-
-</header>
+<?php
+include '../components/header.php';
+?>
 
 <section class="about" id="about">
 
@@ -39,36 +9,33 @@
     <div class="row">
 
         <div class="slider">
-           <!--<a href="slider.html">Slider<ul>*/-->
+            <!--<a href="slider.html">Slider<ul>*/-->
             <div id="sliderAuto">
                 <script>
-    
-                var index=0 ;
-                var kohaPerSlide= 3000;
-                var fotot = [];
-    
-                fotot[0]= 'Slider/img/img1.jpg'
-                fotot[1]='Slider/img/img2.jpg'
-                fotot[2]='Slider/img/img3.jpg.'
-               
-    
-                function slidePics(){
-                    document.sliderpics.src = fotot[index];
-                    if(index<fotot.length - 1){
-    
-                    index++;
-    
+                    var index = 0;
+                    var kohaPerSlide = 3000;
+                    var fotot = [];
+
+                    fotot[0] = 'Slider/img/img1.jpg'
+                    fotot[1] = 'Slider/img/img2.jpg'
+                    fotot[2] = 'Slider/img/img3.jpg.'
+
+
+                    function slidePics() {
+                        document.sliderpics.src = fotot[index];
+                        if (index < fotot.length - 1) {
+
+                            index++;
+
+                        } else {
+
+                            index = 0;
+
+                        }
+
+                        setTimeout("slidePics()", kohaPerSlide);
                     }
-                    else{
-    
-                    index=0;
-    
-                    }
-    
-                    setTimeout("slidePics()",kohaPerSlide);
-                }
-                window.onload = slidePics;
-    
+                    window.onload = slidePics;
                 </script>
                 <img name="sliderpics" id="imgCSS" style="filter: invert(0);">
             </div>
@@ -124,6 +91,5 @@
     </div>
 
 </section>
-
 </body>
 </html>

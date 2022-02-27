@@ -46,11 +46,4 @@ class Product{
         return $this->prodhuesi;
     }
 }
-
-
-
-
-
-
-
 ?>

@@ -1,23 +1,26 @@
 <?php
 
-class DatabaseConfig{
+class DatabaseConfig {
     private $connection;
     private $host = "localhost";
-    private $dbname = "lulishtja";
+    private $user = "root";
+    private $dbname = "lulishjta";
 
-    protected function getConnetion(){
+    public function getConnection(){
         $this->createConnection();
-        return $this->conneciton;
+        return $this->connection;
     }
-    private function createConnection (){
-        try{
-            $this-> connetion = new PDO("mysql:host=$this->host;dbname=$this->dbname","root","");
+
+    private function createConnection(){
+        try {
+            
+            $this->connection = new PDO("mysql:host=$this->host;dbname=$this->dbname", "user=$this->user", "");
+            echo "good";
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
         }
-        catch(PDOException $e){
-            print "Error: " . $e->getMessage(). "<br/>";
-            die()
-        }
+
     }
 }
-
-?>h
+?>
