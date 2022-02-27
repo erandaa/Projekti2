@@ -12,12 +12,12 @@ class LoginVerify {
     public function verifyData(){
         if($this->emptyInputs($this->email, $this->password)){
             $_SESSION['login-register-error'] = true;
-            header("Location: ../pagess/Login.php?login=emptyfields");
+            header("Location: ../views/llogaria.php?login=emptyfields");
         } else if ($this->correctLoginData($this->email, $this->password)){
-            header("Location: ../pages/index.php?login=success");
+            header("Location: ../views/index.php?login=success");
         } else{
             $_SESSION['login-register-error'] = true;
-            header("Location: ../pages/Login.php?login=error");
+            header("Location: ../views/llogaria.php?login=error");
         }
     }
 
@@ -30,7 +30,7 @@ class LoginVerify {
     
     private function correctLoginData($email, $password){
         $mapper = new UserMapper();
-        $user = $mapper->getAllUserByEmail($email);
+        $user = $mapper->getUserByEmail($email);
         if ($user == null || count($user) == 0) {
             return false;
         }
@@ -62,20 +62,19 @@ class RegisterVerify{
     }
 
     public function insertData(){
-        
+
         if($this->emptyInputs($this->firstname, $this->lastname, $this->email, $this->password)){
             $_SESSION['login-register-error'] = true;
-            header("Location: ../pagess/Login.php?register=emptyfields");
-        } 
+            header("Location: ../views/llogaria.php?register=emptyfields");
+        }
         else if($this->verifyData() == false){
             $_SESSION['login-register-error'] = true;
-            header("Location: ../pagess/Login.php?register=error");
-        } 
+            header("Location: ../views/llogaria.php?register=error");
+        }
         else {
             $user = new User($this->firstname, $this->lastname, $this->email, $this->password, 0);
             $mapper = new UserMapper();
             $mapper->insertUser($user);
-           
             $login = new LoginVerify($this->email, $this->password);
             $login->verifyData();
         }
@@ -116,7 +115,6 @@ class RegisterVerify{
             return false;
     }
 
-
     public function validEmailModification($id){
         $mapper = new UserMapper();
         $emailList = $mapper->getConstraintEmail($id);
@@ -127,4 +125,5 @@ class RegisterVerify{
         return true;
     }
 }
-?>
+
+

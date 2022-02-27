@@ -19,5 +19,5 @@ if(isset($_POST['login'])){
     $register = new RegisterVerify($firstname, $lastname, $email, $password);
     $register->insertData();
 }else {
-    header("Location: ../pages/index.php");
+    header("Location: ../views/index.php");
 }

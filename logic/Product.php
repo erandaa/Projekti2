@@ -10,20 +10,21 @@ class Product{
     private $admin;
     private $prodhuesi;
 
-    public function __constuct($emri,$cmimi,$pershkrimi,$sasia,$kategoria,$image,$admin_id,$prodhuesi){
+    public function __construct($emri, $cmimi, $pershkrimi,$sasia,$kategoria,$image, $admin_id, $prodhuesi){
         $this->emri=$emri;
-        $this->cmimi=$cmimi;
+        $this->cmimi = $cmimi;
         $this->pershkrimi=$pershkrimi;
         $this->sasia=$sasia;
         $this->kategoria=$kategoria;
         $this->image=$image;
-        $this->admin=$admin_id;
-        $this->prodhuesi=$prodhuesi;
+        $this->admin = $admin_id;
+        $this->prodhuesi = $prodhuesi;
     }
 
     public function getEmri(){
         return $this->emri;
     }
+
     public function getCmimi(){
         return $this->cmimi;
     }
@@ -46,4 +47,3 @@ class Product{
         return $this->prodhuesi;
     }
 }
-?>

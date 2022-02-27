@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 require_once "Database.php";
 
 class UserMapper extends DatabaseConfig {
@@ -34,7 +35,7 @@ class UserMapper extends DatabaseConfig {
         return $result;
     }
 
-    public function getAllUserByEmail($email){
+    public function getUserByEmail($email){
         $this->query = "select * from users where email=:email";
         $statement = $this->connection->prepare($this->query);
         $statement->bindParam(":email", $email);
@@ -52,7 +53,7 @@ class UserMapper extends DatabaseConfig {
         return $result;
     }
 
-  
+    //Get all emails except the user whose id is given as argument
     public function getConstraintEmail($id){
         $this->query = "select email
         from users
